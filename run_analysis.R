@@ -114,6 +114,6 @@ avgData<-aggregate(second[colnames(Xtable)], by=list(subject=second$subject, act
 ##easy to read csv file
 write.csv(avgData,file = "./data/dataset/mergedDataSet/trainandtest/avgData.csv")
 ##similar txt file
-write.table(avgData,file = "./data/dataset/mergedDataSet/trainandtest/avgData.txt")
+write.table(avgData,file = "./data/dataset/mergedDataSet/trainandtest/avgData.txt", row.names = FALSE)
 
 
