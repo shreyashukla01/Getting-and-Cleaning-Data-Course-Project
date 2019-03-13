@@ -111,5 +111,9 @@ second<-cbind(Xtable,Ytable,SubjectTable)
 colnames(second)[562]<-"activity"
 colnames(second)[563]<-"subject"
 avgData<-aggregate(second[colnames(Xtable)], by=list(subject=second$subject, activity = second$activity), FUN=mean)
+##easy to read csv file
 write.csv(avgData,file = "./data/dataset/mergedDataSet/trainandtest/avgData.csv")
+##similar txt file
+write.table(avgData,file = "./data/dataset/mergedDataSet/trainandtest/avgData.txt")
+
 
