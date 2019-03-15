@@ -11,7 +11,7 @@ download.file(url,destfile = "./data/dataset.zip")
 
 dir.create("./data/dataset/mergedDataSet")
 dir.create("./data/dataset/mergedDataSet/trainandtest")
-dir.create("./data/dataset/mergedDataSet/trainandtest/Intertial Signals")
+dir.create("./data/dataset/mergedDataSet/trainandtest/Inertial Signals")
 
 ## merging X_train and X_test
 Xtable1<-read.table("./data/dataset/UCI HAR Dataset/train/X_train.txt")
@@ -87,7 +87,7 @@ write.table(bodyaccz,file = "./data/dataset/mergedDataSet/trainandtest/Inertial 
 
 ##2.Extracting only the measurements on the mean and standard deviation for each measurement.
 
-tab<-read.table("./data/dataset/mergedDataSet/features.txt")
+tab<-read.table("./data/dataset/UCI HAR Dataset/features.txt")
 names<-as.character(tab$V2)
 colnames(Xtable)<-names
 result<-Xtable[,grep(".*mean()|.*std()", colnames(Xtable))]
@@ -108,12 +108,8 @@ write.table(result,"./data/dataset/mergeddataset/trainandtest/timeAndFrequencyVa
 ##5. From the data set in step 4, created a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 second<-cbind(result,Ytable,SubjectTable)
-colnames(second)[562]<-"activity"
-colnames(second)[563]<-"subject"
+colnames(second)[80]<-"activity"
+colnames(second)[81]<-"subject"
 avgData<-aggregate(second[colnames(result)], by=list(subject=second$subject, activity = second$activity), FUN=mean)
-##easy to read csv file
 write.csv(avgData,file = "./data/dataset/mergedDataSet/trainandtest/avgData.csv")
-##similar txt file
-write.table(avgData,file = "./data/dataset/mergedDataSet/trainandtest/avgData.txt", row.names = FALSE)
-
-
+write.table(avgData,file = "./data/dataset/mergedDataSet/trainandtest/avgData.txt")
