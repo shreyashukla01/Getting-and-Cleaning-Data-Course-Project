@@ -25,48 +25,17 @@ For each record it is provided:
 - Its activity label. 
 - An identifier of the subject who carried out the experiment.
 
-The dataset includes the following files:
-=========================================
+The R script in "run_analysis.R" run according to the following steps:
 
-- 'README.txt'
+1. create "data" folder in the current working directory
+2. download the dataset under the data folder as dataset.zip using following commands mentioned in run_anlysis.R.
 
-- 'features_info.txt': Shows information about the variables used on the feature vector.
+url<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(url,destfile = "./data/dataset.zip")
 
-- 'features.txt': List of all features.
-
-- 'activity_labels.txt': Links the class labels with their activity name.
-
-- 'trainandtest/timeAndFrequency.txt': A 561-feature vector with time and frequency domain variables.
-
-- 'trainandtest/subjects.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
-
-- 'trainandtest/activitylabel.txt': Descriptive Activity labels.
-
-- 'trainandtest/avgData.csv': independent tidy data set with the average of each variable for each activity and each subject.
-
-- 'trainandtest/combinedDataSet.txt' : Data set with time & Frequency variables, activity labels, subjects.
-
-The following files are available for the trainandtest data. Their descriptions are equivalent.  
-
-- 'trainandtest/Inertial Signals/total_acc_x.txt': The acceleration signal from the smartphone accelerometer X axis in standard gravity units 'g'. Every row shows a 128 element vector. The same description applies for the 'total_acc_x_train.txt' and 'total_acc_z_train.txt' files for the Y and Z axis. 
-
-- 'trainandtest/Inertial Signals/body_acc_x.txt': The body acceleration signal obtained by subtracting the gravity from the total acceleration. 
-
-- 'trainandtest/Inertial Signals/body_gyro_x.txt': The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second. 
-
-Notes: 
-======
-- Features are normalized and bounded within [-1,1].
-- Each feature vector is a row on the text file.
-
-For more information about this dataset contact: activityrecognition@smartlab.ws
-
-License:
-========
-Use of this dataset in publications must be acknowledged by referencing the following publication [1] 
-
-[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
-
-This dataset is distributed AS-IS and no responsibility implied or explicit can be addressed to the authors or their institutions for its use or misuse. Any commercial use is prohibited.
-
-Jorge L. Reyes-Ortiz, Alessandro Ghio, Luca Oneto, Davide Anguita. November 2012.
+3. extract the zip file manually in the data directory.
+4. Run the "run_analysis.R" which will create a mergedDataSet which will contain merged data from train and test folder.
+5. It will extract only the measurements on the mean and standard deviation for each measurement.
+6. It will Edit the activity label file with descriptive information
+7. Appropriately label the data set with descriptive variable names.
+8. Create a second, independent tidy data set with the average of each variable for each activity and each subject.
