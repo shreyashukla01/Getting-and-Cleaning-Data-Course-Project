@@ -101,16 +101,16 @@ Ytable$V1<-sapply(Ytable$V1,function(x) x<-switch(x,"WALKING","WALKING_UPSTAIRS"
 ## 4. Appropriately labeling the data set with descriptive variable names.
 ## Since the columns of Xtable data frame were taken from the features file earlier. Saving it now in the data set.
 
-write.table(Xtable,"./data/dataset/mergeddataset/trainandtest/timeAndFrequencyVar.txt")
+write.table(result,"./data/dataset/mergeddataset/trainandtest/timeAndFrequencyVar.txt")
 
 
 
 ##5. From the data set in step 4, created a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-second<-cbind(Xtable,Ytable,SubjectTable)
+second<-cbind(result,Ytable,SubjectTable)
 colnames(second)[562]<-"activity"
 colnames(second)[563]<-"subject"
-avgData<-aggregate(second[colnames(Xtable)], by=list(subject=second$subject, activity = second$activity), FUN=mean)
+avgData<-aggregate(second[colnames(result)], by=list(subject=second$subject, activity = second$activity), FUN=mean)
 ##easy to read csv file
 write.csv(avgData,file = "./data/dataset/mergedDataSet/trainandtest/avgData.csv")
 ##similar txt file
